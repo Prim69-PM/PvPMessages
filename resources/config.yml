@@ -1,0 +1,25 @@
+#Here you can set the death messages and decide whether or not you want the players health to show
+
+#If health is true, the death message would look like this "xPrim69x was tossed by Randy69 [13]"
+#Using xPrim69x and Randy69 as example players, "Tossed" as an example death message, and
+#considering Randy69 had 13 health left.
+
+#If Health is false the death meassage would look something like this: "xPrim69x was tossed by Randy69"
+
+Health: True
+
+#Use § as needed for color.
+
+#An Example of DeathMessage below, it would send this "xPrim69x has been slapped by RandomKid69"
+# %victim% is the player dying, %randommsg% picks a random message from ArrayMessage below, %killer% is the killer ofc.
+DeathMessage: "%victim% %randommsg% by %killer%"
+
+ArrayMessage:
+
+  - "has been slained"
+  - "has been slapped"
+  - "has been demolished"
+  - "has been killed"
+
+#Above you can either make each one an individual color or set a default color below. Leave it blank if you want to set each one individually
+Color: §d

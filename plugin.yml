@@ -1,0 +1,6 @@
+name: RandomDeathMessages
+main: Prim\RandomDeathMessages\Main
+api: [3.0.0]
+version: 1.6.9
+author: Prim
+description: A custom and random death messages plugin made by xPrim69x.
