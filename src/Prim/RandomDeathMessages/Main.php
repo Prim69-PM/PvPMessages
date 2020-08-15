@@ -8,7 +8,7 @@ use pocketmine\event\{Entity, Listener};
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 
-use pocketmine\plugin\Pluginbase;
+use pocketmine\plugin\PluginBase;
 
 use pocketmine\utils\Config;
 
