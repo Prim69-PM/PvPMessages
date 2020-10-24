@@ -30,6 +30,9 @@ class Main extends Pluginbase implements Listener{
 		if($cause instanceof EntityDamageByEntityEvent) {
 			$d = $cause->getDamager();
 			if ($d instanceof Player) {
+			  if($this->getConfig()->get("HealOnKill") === true){
+				$d->setHealth(20);
+			  }
 				$hp = round($d->getHealth(), 2);
 				$dname = $d->getName();
 	$variable = str_replace(["%killer%", "%victim%", "%randommsg%"], [$dname, $name, $msgs[array_rand($msgs)]], $variable);
