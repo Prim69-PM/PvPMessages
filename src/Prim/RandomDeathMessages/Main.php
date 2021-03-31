@@ -2,22 +2,17 @@
 
 namespace Prim\RandomDeathMessages;
 
-use pocketmine\{Player, Server};
-use pocketmine\event\{Entity, Listener};
-
+use pocketmine\Player;
+use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
-
 use pocketmine\plugin\PluginBase;
-
-use pocketmine\utils\Config;
 
 class Main extends Pluginbase implements Listener{
 
 	public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->saveResource("config.yml");
-		$this->config = new Config($this->getDataFolder()."config.yml", Config::YAML);
+		$this->saveResource("config.yml");
 	}
 
 	public function onKill(PlayerDeathEvent $event){
@@ -30,17 +25,15 @@ class Main extends Pluginbase implements Listener{
 		if($cause instanceof EntityDamageByEntityEvent) {
 			$d = $cause->getDamager();
 			if ($d instanceof Player) {
-			  if($this->getConfig()->get("HealOnKill") === true){
-				$d->setHealth(20);
-			  }
+				if($this->getConfig()->get("HealOnKill")) $d->setHealth(20);
+				
 				$hp = round($d->getHealth(), 2);
 				$dname = $d->getName();
-	$variable = str_replace(["%killer%", "%victim%", "%randommsg%"], [$dname, $name, $msgs[array_rand($msgs)]], $variable);
-				if($this->getConfig()->get("Health") === true) {
-					$event->setDeathMessage($variable . " §7[§c$hp" . "§7]");
-					if(isset($color)){
-						$event->setDeathMessage($color . $variable . " §7[§c$hp" . "§7]");
-					}
+				$variable = str_replace(["%killer%", "%victim%", "%randommsg%"], [$dname, $name, $msgs[array_rand($msgs)]], $variable);
+				
+				if($this->getConfig()->get("Health")) {
+					$event->setDeathMessage("$variable §7[§c$hp" . "§7]");
+					if(isset($color)) $event->setDeathMessage($color . "$variable §7[§c$hp" . "§7]");
 				} else {
 					if(isset($color)){
 						$event->setDeathMessage($color . $variable);
@@ -49,6 +42,7 @@ class Main extends Pluginbase implements Listener{
 					}
 				}
 			}
-			}
 		}
+	}
+	
 }
