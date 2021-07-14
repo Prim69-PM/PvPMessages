@@ -41,16 +41,10 @@ class Main extends Pluginbase implements Listener{
 				$variable = str_replace(["%killer%", "%victim%", "%randommsg%"], [$dname, $name, $this->messages[array_rand($this->messages)]], $this->deathMessage);
 
 				if($this->health) {
-					$event->setDeathMessage("$variable §7[§c$hp" . "§7]");
-					if(isset($color)) $event->setDeathMessage($this->color . "$variable §7[§c$hp" . "§7]");
+					$event->setDeathMessage($this->color . "$variable §7[§c$hp" . "§7]");
 					return;
 				}
-				
-				if(isset($color)){
-					$event->setDeathMessage($this->color . $variable);
-					return;
-				}
-				$event->setDeathMessage($variable);
+				$event->setDeathMessage($this->color . $variable);
 			}
 		}
 	}
